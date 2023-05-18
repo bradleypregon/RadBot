@@ -1,13 +1,13 @@
-const main = require("../main.js");
+//const main = require("../main.js");
 
 module.exports = {
 	name: "play",
 	description: "Joins VC and plays audio.",
 
-	async execute(message, args) {
+	async execute(message, args, client) {
 		console.log("playing cmd: " + args);
 
-		const client = main.client;
+		//const client = main.client;
 
 		let guildQueue = client.player.getQueue(message.guild.id);
 		const voiceChannel = message.member.voice.channel;

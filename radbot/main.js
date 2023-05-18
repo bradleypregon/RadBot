@@ -4,7 +4,6 @@ const client = new Client({
 	intents: [
 		GatewayIntentBits.DirectMessages,
 		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildBans,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.GuildVoiceStates,
 		GatewayIntentBits.MessageContent,
@@ -49,7 +48,7 @@ client.on("messageCreate", async (message) => {
 	if (command === "ping") {
 		client.commands.get("ping").execute(message);
 	} else if (command === "play") {
-		client.commands.get("play").execute(message, args[0]);
+		client.commands.get("play").execute(message, args[0], client);
 	} else if (command === "pause") {
 		client.commands.get("pause").execute(message);
 	} else if (command === "resume") {
