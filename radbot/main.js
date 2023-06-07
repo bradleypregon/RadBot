@@ -26,7 +26,7 @@ for (const file of cmdFiles) {
 }
 
 // Define Player and create a client property = player
-const { Player } = require("discord-music-player");
+const { Player } = require("@jadestudios/discord-music-player");
 const player = new Player(client, {
 	leaveOnEmpty: false,
 	leaveOnStop: false,
@@ -44,17 +44,19 @@ client.on("messageCreate", async (message) => {
 	const args = message.content.slice(prefix.length).split(" ");
 	const command = args.shift().toLowerCase();
 
+	let guildQueue = client.player.getQueue(message.guild.id);
+
 	// commands
 	if (command === "ping") {
 		client.commands.get("ping").execute(message);
 	} else if (command === "play") {
-		client.commands.get("play").execute(message, args[0], client);
+		client.commands.get("play").execute(message, args[0], client, guildQueue);
 	} else if (command === "pause") {
-		client.commands.get("pause").execute(message);
+		client.commands.get("pause").execute(message, client, guildQueue);
 	} else if (command === "resume") {
-		client.commands.get("resume").execute(message);
+		client.commands.get("resume").execute(message, client, guildQueue);
 	} else if (command === "stop") {
-		client.commands.get("stop").execute(message);
+		client.commands.get("stop").execute(message, client, guildQueue);
 	}
 });
 
