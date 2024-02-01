@@ -2,9 +2,9 @@
   "name": "radbot",
   "version": "1.0.0",
   "description": "RadBot is a music bot for Discord powered by Discord-Music-Player",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "node main",
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bradley Pregon",

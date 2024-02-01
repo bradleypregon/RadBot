@@ -17,7 +17,7 @@ const prefix = "/";
 
 // commands in ./commands
 const cmdFiles = fs
-	.readdirSync("./commands/")
+	.readdirSync("src/commands/")
 	.filter((file) => file.endsWith(".js"));
 
 for (const file of cmdFiles) {
@@ -49,6 +49,8 @@ client.on("messageCreate", async (message) => {
 	// commands
 	if (command === "ping") {
 		client.commands.get("ping").execute(message);
+	} else if (command === "penis") {
+		client.commands.get("pen15").execute(message);
 	} else if (command === "play") {
 		client.commands.get("play").execute(message, args[0], client, guildQueue);
 	} else if (command === "pause") {
