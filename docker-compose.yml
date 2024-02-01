@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  radbot:
+    build: .
+    restart: unless-stopped
+    container_name: radbot
