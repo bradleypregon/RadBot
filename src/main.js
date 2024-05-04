@@ -49,8 +49,6 @@ client.on("messageCreate", async (message) => {
 	// commands
 	if (command === "ping") {
 		client.commands.get("ping").execute(message);
-	} else if (command === "penis") {
-		client.commands.get("pen15").execute(message);
 	} else if (command === "play") {
 		client.commands.get("play").execute(message, args[0], client, guildQueue);
 	} else if (command === "pause") {
