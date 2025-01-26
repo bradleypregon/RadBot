@@ -10,7 +10,7 @@
   "author": "Bradley Pregon",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.9.0",
+    "@discordjs/opus": "^0.10.0",
     "@discordjs/voice": "^0.18.0",
     "@jadestudios/discord-music-player": "^9.1.1-az30",
     "discord.js": "^14.17.3",
