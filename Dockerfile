@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install g++ && apt-get install make && apt-get ins
 RUN npm install -g node-gyp
 #RUN npm install
 RUN git clone --single-branch --branch dep-update https://github.com/bradleypregon/discord-music-player.git
-
-RUN npm i discord-music-player
+RUN cd discord-music-player && npm install && npm run build && cd ..
+RUN npm i ./discord-music-player
 
 CMD ["npm", "start"]
