@@ -1,18 +1,22 @@
-const { Client, Collection, GatewayIntentBits } = require("discord.js");
+const { Collection } = require("discord.js");
+const { Player } = require('discord-player');
+const { DefaultExtractors } = require('@discord-player/extractor');
 
-const client = new Client({
+const client = new Discord.Client({
 	intents: [
-		GatewayIntentBits.DirectMessages,
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildMessages,
-		GatewayIntentBits.GuildVoiceStates,
-		GatewayIntentBits.MessageContent,
+		DirectMessages,
+		Guilds,
+		GuildMessages,
+		GuildVoiceStates,
+		MessageContent,
 	],
 });
 
 client.commands = new Collection();
+
 const fs = require("fs");
 require("dotenv").config();
+
 const prefix = "/";
 
 // commands in ./commands
@@ -25,14 +29,17 @@ for (const file of cmdFiles) {
 	client.commands.set(cmd.name, cmd);
 }
 
-// Define Player and create a client property = player
-const { Player } = require("@jadestudios/discord-music-player");
+const { Player } = new Player(client);
+await player.extractors.loadMulti(DefaultExtractors);
+
 const player = new Player(client, {
 	leaveOnEmpty: false,
 	leaveOnStop: false,
 	deafenOnJoin: false,
 });
-client.player = player;
+
+// not recommended
+//client.player = player;
 
 client.once("ready", () => {
 	console.log("RadBot is sunshine.");
